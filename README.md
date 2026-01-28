@@ -1,4 +1,4 @@
-# Chronous - Premium Watch E-commerce Platform
+# Chronos - Premium Watch E-commerce Platform
 
 A full-stack e-commerce platform specialized for watches.
 
