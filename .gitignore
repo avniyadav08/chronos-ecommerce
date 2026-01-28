@@ -1,0 +1,101 @@
+
+Chronous- A full-stack e-commerce platform specialized for watches
+TechStack:
+FRONTEND:
+-react
+-tailwind
+-axios
+-JWT handling
+BACKEND:
+i want modern js system
+-node.js
+-express.js
+DATABASE:
+-MongoDb(mongoose)
+STROAGE:
+-cloudinary
+PAYMENTS:
+-rAZORPAY TEST
+DEPLOYMENT:
+you suggest
+i want u to gudie me every step like what to strt from and what to do in that as it is my first project tell me one by one like first do until i tell u i have completed dont move forward to the next step
+and i would hand to hand upload it on git hub
+
+Show more
+00:05
+Chronous - Your Watch E-commerce Journey Begins! 🚀
+I'm excited to guide you through building your first full-stack project! Let me break this down into manageable steps.
+
+STEP 1: Project Setup & Structure
+This is where we start - Don't move forward until you complete this!
+
+What you'll do:
+Create the project structure
+Initialize Git and GitHub
+Set up the backend skeleton
+Detailed Instructions for Step 1:
+Part A: Create Folders & Initialize
+bash
+# Create main project folder
+mkdir chronous-ecommerce
+cd chronous-ecommerce
+
+# Create backend and frontend folders
+mkdir backend
+mkdir frontend
+
+# Initialize Git
+git init
+Part B: Create GitHub Repository
+Go to GitHub.com
+Click "New Repository"
+Name it: chronous-ecommerce
+Keep it Public (or Private if you prefer)
+Don't initialize with README (we'll do it manually)
+Click "Create Repository"
+Part C: Connect Local to GitHub
+bash
+# In your chronous-ecommerce folder
+git remote add origin https://github.com/YOUR_USERNAME/chronous-ecommerce.git
+Part D: Create Initial Files
+Create a README.md in the root folder:
+
+markdown
+# Chronous - Premium Watch E-commerce Platform
+
+A full-stack e-commerce platform specialized for watches.
+
+## Tech Stack
+- **Frontend:** React, Tailwind CSS
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB
+- **Storage:** Cloudinary
+- **Payments:** Razorpay
+
+## Project Status
+🚧 In Development
+```
+
+Create a `.gitignore` file in the root:
+```
+# Dependencies
+node_modules/
+frontend/node_modules/
+backend/node_modules/
+
+# Environment variables
+.env
+backend/.env
+frontend/.env
+
+# Build files
+frontend/build/
+frontend/dist/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
