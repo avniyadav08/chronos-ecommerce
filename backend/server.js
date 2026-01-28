@@ -2,6 +2,7 @@ const express=require("express");
 const cors=require("cors");
 const dotenv=require("dotenv");
 const cookieParser=require("cookie-parser");
+const connectDatabase=require("./config/database.js");
 
 dotenv.config();
 
@@ -15,10 +16,13 @@ app.use(cors({
     cedentials:true
 }));
 
+connectDatabase();
+
 app.get('/',(req,res)=>{
     res.json({
         message:'Chronos API is running',
-        version:'1.0.0'
+        version:'1.0.0',
+        database:'connected'
     });
 });
 
@@ -26,5 +30,5 @@ const PORT=process.env.PORT || 5000;
 
 app.listen(PORT,()=>{
     console.log(`server running on port ${PORT} in ${process.env.NODE_ENV}mode`);
-    
+
 })
