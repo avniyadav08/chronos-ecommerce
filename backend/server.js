@@ -1,22 +1,25 @@
 const express=require("express");
-const cors=require("cors");
 const dotenv=require("dotenv");
+const cors=require("cors");
 const cookieParser=require("cookie-parser");
 const connectDatabase=require("./config/database.js");
+const errorMiddleware=require('./middleware/error.js');
 
 dotenv.config();
 
 const app=express();
+
+connectDatabase();
 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
 app.use(cors({
     origin:"http://localhost:3000",
-    cedentials:true
+    credentials:true
 }));
 
-connectDatabase();
+
 
 app.get('/',(req,res)=>{
     res.json({
@@ -25,6 +28,11 @@ app.get('/',(req,res)=>{
         database:'connected'
     });
 });
+
+//import router
+const authRoutes=require("./routes/authRoutes.js");
+app.use('/api/v1/auth',authRoutes);
+app.use(errorMiddleware);
 
 const PORT=process.env.PORT || 5000;
 
