@@ -1,42 +1,57 @@
-const express=require("express");
-const dotenv=require("dotenv");
-const cors=require("cors");
-const cookieParser=require("cookie-parser");
-const connectDatabase=require("./config/database.js");
-const errorMiddleware=require('./middleware/error.js');
+const express = require('express');
+const dotenv = require('dotenv');
+const cors = require('cors');
+const cookieParser = require('cookie-parser');
+const connectDatabase = require('./config/database');
 
+// Load environment variables
 dotenv.config();
 
-const app=express();
+const app = express();
 
+// Connect to Database
 connectDatabase();
 
+// Middleware
 app.use(express.json());
-app.use(express.urlencoded({extended:true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(cors({
-    origin:"http://localhost:3000",
-    credentials:true
+    origin: 'http://localhost:3000',
+    credentials: true
 }));
 
-
-
-app.get('/',(req,res)=>{
-    res.json({
-        message:'Chronos API is running',
-        version:'1.0.0',
-        database:'connected'
+// Test route
+app.get('/', (req, res) => {
+    res.json({ 
+        message: 'Chronous API is running!',
+        version: '1.0.0',
+        database: 'Connected'
     });
 });
 
-//import router
-const authRoutes=require("./routes/authRoutes.js");
-app.use('/api/v1/auth',authRoutes);
-app.use(errorMiddleware);
+// Import routes
+const authRoutes = require('./routes/authRoutes');
+const userRoutes = require('./routes/userRoutes');
 
-const PORT=process.env.PORT || 5000;
+// Use routes
+app.use('/api/v1/auth', authRoutes);
+app.use('/api/v1', userRoutes);
 
-app.listen(PORT,()=>{
-    console.log(`server running on port ${PORT} in ${process.env.NODE_ENV}mode`);
+// Simple error handler
+app.use((err, req, res, next) => {
+    const statusCode = err.statusCode || 500;
+    const message = err.message || 'Internal Server Error';
+    
+    res.status(statusCode).json({
+        success: false,
+        message: message
+    });
+});
 
-})
+// Server
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+    console.log(`🚀 Server running on port ${PORT} in ${process.env.NODE_ENV} mode`);
+});

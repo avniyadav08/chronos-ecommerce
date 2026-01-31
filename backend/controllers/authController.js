@@ -1,5 +1,5 @@
 const User=require('../models/userModel.js')
-const ErrorHandler=require('../utils/errorHandel.js')
+const ErrorHandler=require('../utils/errorHandler.js')
 const catchAsyncErrors=require('../middleware/catchAsyncErrors.js')
 const sendToken=require('../utils/jwtToken.js')
 const bcrypt=require("bcryptjs");
