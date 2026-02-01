@@ -33,10 +33,13 @@ app.get('/', (req, res) => {
 // Import routes
 const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
+const productRoutes=require('./routes/productRoutes');
+
 
 // Use routes
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1', userRoutes);
+app.use('/api/v1',productRoutes);
 
 // Simple error handler
 app.use((err, req, res, next) => {
