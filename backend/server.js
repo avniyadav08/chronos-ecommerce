@@ -34,12 +34,17 @@ app.get('/', (req, res) => {
 const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
 const productRoutes=require('./routes/productRoutes');
+const orderRoutes=require('./routes/orderRoutes')
 
 
 // Use routes
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1', userRoutes);
 app.use('/api/v1',productRoutes);
+app.use('/api/v1',orderRoutes);
+
+
+
 
 // Simple error handler
 app.use((err, req, res, next) => {
@@ -57,4 +62,4 @@ const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
     console.log(`🚀 Server running on port ${PORT} in ${process.env.NODE_ENV} mode`);
-});
+})
